@@ -41,8 +41,15 @@ def main():
     logging.basicConfig(level=logging.DEBUG,
                         filename=args.logfile)
 
-    the_responder = Responder(Secrets(args.secrets),
-                              TheRecord(args.glorydb))
+    context = { 'secrets': Secrets(args.secrets),
+                'glory': TheRecord(args.glorydb), }
+
+
+    handlers = { 'event_callback': lambda c,i: logging.info(f'E {i}'),
+                 'action_callback': lambda c,i: logging.info(f'A {i}'),
+                 'command_callback': lambda c,i: logging.info(f'C {i}'),}
+
+    the_responder = Responder(context=context, handlers=handlers)
     
     @hug.directive()
     def responder(default=False, **kwargs):
