@@ -15,7 +15,7 @@ glory = Glory('sqlite///path/to/glory.db')
 import dataset
 import time
 
-class TheRecord:
+class TheRecordOfGlory:
     '''The roll call of glory and shame.
     '''
     
@@ -35,9 +35,10 @@ class TheRecord:
         optional timestamp.
 
         :param from_user: str
-        :param to_user: str
-        :param amount: int
+        :param to_user:   str
+        :param amount:    int
         :param timestamp: optional int
+
         :return: dict('name'=str, 'balance'=int)
         '''
         
@@ -54,15 +55,19 @@ class TheRecord:
         else:
             row = { 'name': to_user, 'balance': amount}
         self._summary.upsert(row, ['name'])
-
+        
         return row
 
+
     def reward(self, grantee: str, acclaimed: str) -> dict:
-        '''Records glory the grantee heaped upon the acclaimed.'''
+        '''Records glory the grantee heaped upon the acclaimed.
+        Returns a dictionary containing the grantee's name and balance.
+        '''
         return self._transaction(grantee, acclaimed, 1)
 
     def punish(self, accuser: str, offender: str) -> dict:
-        '''Records scorn the accuser heaped upon the offender.'''
+        '''Records scorn the accuser heaped upon the offender.
+        Returns a dictionary containing the offender's name and balance.'''
         return self._transcation(accuser, offender, -1)
 
     def standing(self, user : str) -> int:
@@ -72,5 +77,25 @@ class TheRecord:
         if row:
             return row.get('balance', 0)
         return 0
+
+    def heros(self, count: int =10) -> list:
+        ''' Return a list of gloryhounds with the most accolades.
+        '''
+        raise NotImplementedError('heros')
+
+    def villains(self, count: int =10) -> list:
+        '''Return a list of villains with the lowest accounting.
+        '''
+        raise NotImplementedError('villains')
+
+    def conduct(self, user: str) -> dict:
+        '''Return a dictionary with a summary of the user's conduct.
+        '''
+        raise NotImplementedError('conduct')
+
+    def expunge(self):
+        '''Reset the record. Seriously, it will be gone. Clean slate.'''
+        raise NotImplementedError('reset')
+
         
     
