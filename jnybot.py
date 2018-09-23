@@ -9,8 +9,9 @@ import threading
 
 from bot.dispatcher import Dispatcher
 from bot.responder import Responder
-from bot.glory import TheRecord
+from bot.glory import TheRecordOfGlory
 from bot.secrets import Secrets
+from bot.handlers import handlers
 
 def parse_commandline():
     '''
@@ -42,14 +43,10 @@ def main():
                         filename=args.logfile)
 
     context = { 'secrets': Secrets(args.secrets),
-                'glory': TheRecord(args.glorydb), }
+                'glory': TheRecordOfGlory(args.glorydb), }
 
-
-    handlers = { 'event_callback': lambda c,i: logging.info(f'E {i}'),
-                 'action_callback': lambda c,i: logging.info(f'A {i}'),
-                 'command_callback': lambda c,i: logging.info(f'C {i}'),}
-
-    the_responder = Responder(context=context, handlers=handlers)
+    the_responder = Responder(context=context,
+                              handlers=handlers)
     
     @hug.directive()
     def responder(default=False, **kwargs):
