@@ -1,0 +1,8 @@
+{
+"APP_ID": "application id",
+"CLIENT_ID": "client id",
+"CLIENT_SECRET": "client secret",
+"SIGNING_SECRET": "signing secret",
+"APP_TOKEN": "application token",
+"BOT_TOKEN": "bot token"
+}
