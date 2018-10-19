@@ -1,0 +1,23 @@
+Objective:
+
+Create a system that promotes participation and builds relationships.
+
+Once a week (Perhaps every Sunday), The Top 20 Heroes of the week will be posted in #general
+
+Top 20 Heroes of the Week Points Structure:
+
+1st: 100 pts
+2nd - 5th: 75 pts
+5th - 10th: 60pts
+10th - 20th: 45 pts
+Active for the week : 20 pts
+
+
+These points will apply to the yearly overall rankings. At the end of the year, awards can be given to top performers.
+
+Badges:
+Hero Overall (Current Overall leader)
+Hero of the Week
+Top 10 Hero Overall (Current year)
+Top 20 Hero Overall (Current year)
+
